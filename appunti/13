@@ -1,0 +1,13 @@
+FPGA-> non viene programamto come altri microcontrollori; vengono utilizzati dei fili verso un blocco logico configurabile
+HDL-> HARDWARE DEFINITION LANGUAGE serve per collegare questi fili all'interno dei blocchi logici
+ASIC-> CIRCUITO STAMPATO DELL'FPGA
+
+entity main is
+PORT(
+    led0:out std_logic
+);
+end main;
+architecture Behavioral of main is 
+begin
+led0<='0';
+end Behavioral;vczx

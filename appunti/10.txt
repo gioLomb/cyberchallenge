@@ -1,0 +1,44 @@
+cifrario di cesare-> spazio chiavi troppo piccolo (26)
+cifrari a scorrimenti -> aritmetica mopdulare e spazio chiave 26!, ma pattern fACILMENTE INDIVIDUABILE CON FREQUENZE LINGUISTICHE
+cifrari polialfabetici (vigenere)-> ogni lettera non sarà cifrata sempre con los tesso carattere, spazio chiave 26^msg(len), ma lunghezza della chiave vulnerabile e ogni blocco del messaggio viene cifrato allo stesso modo (enigma)
+
+cifrario perfetto-> dimostrato matematicamente che è impossibile da rompere
+ONE TIME PAD è un cifrario XOR perfetto-> la cifratura viene fatto con una chiave che viene utilizzata una volta (i cifrari xor hanno come debolezza la frequncy analisys)
+il one time pad è prettamente teorico,poichè è difficile trovare una chiave oer un intero messaggio
+
+vulnerabilità: conoscendo una parte del messaggio,con le proprietà dell' xor, si ha una parte anche della chiave
+m ^ k=c->k=c^ma
+
+se utilizzo però la stessa chiave per più messaggi nello xor cipher si ha una grande vulnerabilità ->Many Time pad
+c1=m1 ^ k
+c2=m2^ k -> c1^c2=m1^k *m2 ^k=
+
+
+CIFRARI A BLOCCHI
+mantenendo l'operazione di xor, le chiavi vengono generate da un algoritmo per ogni messaggio da cifrare
+esempi DES e AES
+des-> da una chiave 16 chiavi da 56bit-> troppo poco, vulnerabile per brute force
+2des -> chiavi da 112 però cifrando i due blocchi da 56 è possibile bruteforcando doppiamente trovare le coincidenze(meet in the middle)->3des
+
+il nuovo standard è AES (128,192,1256)
+
+ECB cifrario a blocchi ma viene utilizzata la stessa chiave per i vari blocchi
+ECB ORACLE ATTACK->
+scenario: ecb(plaintext+stringa_segreta)
+blocco 16 byte
+PLAIN: A*16 + GATTO
+CIPHER: K   K
+PLAIN: (A*15)G +ATTO
+CIPHER:   G    H 
+PROVERO A INVIARE LE 256 COMBINAZIONI FINCHÈ IL CIPHER NON MI DARÀ GH E QUINDI AVRÒ TYROVATO IL PRIMO byte
+TRAMITE QUESTO ORACOLO PRENDERÒ GLI ALTRI
+
+
+CBC partendo da un blocco(IV) viene cifrato ogni blocco con una chiuave xorandolo con il vecchio cipher
+VULNERABILITÀ: iv come chiave o segretoo leak dati (challenge 1.08)
+sapere l'iv  -> 
+p1=p2
+AES(c2)=p2^c1=AES(C1)
+p1 ^ AES(C2)= iv
+
+OPPURE PADDING ORACLE

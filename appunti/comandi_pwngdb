@@ -1,0 +1,5 @@
+pwn debug --exec [binario]  -> debug con gdb di un binario
+ni -> next instruction
+si -> step into funzione
+continue -> continua con il debugging
+       

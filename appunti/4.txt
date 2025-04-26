@@ -1,0 +1,3 @@
+sistema di sicurezza nx(no executable)
+stack non eseguibile e quindi non scrivibile: impossibile fare code injection
+shell code injection

@@ -1,0 +1,38 @@
+vulnerabilità formato stringa (printf)
+%s-> crash poichè si aspetta uno 0
+%x -> stampa esadecimale dallo stack -> leak informazioni
+%p-> stampa puntatore
+%8x -> 8 spazi
+%n  -> scrive su uuna variabile il numero di caratteri stampati (in opzione di scrittura)
+esempio: 
+int contatore;
+printf('dududu%n',&contatore);
+//contatore=(dududu).length
+%1$n -> numero del parametro $ operatore
+
+checksec-> vedi sistemi di sicurezza
+
+per costrurire il payload usare il %p per stampare gli indirizzi  e definire dove il printf legge i suoi parametri. allineare il payload 
+calcolando gli ottetti per poi scrivere
+
+per saltare alla funzione che completa la challenge bisogna utilizzare un indirizzo di quella funzione,
+grazie alla GOT utilizzata dal loader per risolvere il nome della funzione con un indirizzo(di libc)
+ci possiamo scrivere sopra poichè risiede nel segmento del nostro programma (comando got per vedere i vari indirizzi)
+
+l'obiettivo è scrivere l'indirizzo della funzione obiettivo al posto dell'indirizzo di una funzione che risiede dopo quella vulnerabile
+nella got, in maniera tale da richiamarla.
+ nella costruzione del payload bisogna fare attenzione all'endianness(indiriziz al contrario)
+
+ continua sistemi di sicurezza
+ -RELRO : rende read only gli indirizzi della GOT
+ -PIE (Position indipendent execution): permette di cambiare dinamicamente l'indirizzo delle varie istruzioni aggiungendo 
+ l'instruction pointer , il che porta il codice ad essere funzionsnte poichè l'offset sarà sempre uguale (indipendent).
+ con gdb gli indirizzi saranno automaticamente statici
+ -Stack canary:valore messo nello stack di default prima del return address, è un valore randomico pertanto se viene sovrascritto 
+ il programma si ferma.
+
+ tools:
+ dogbolt: diversi decompiler per binari
+ angr
+ libdebug
+

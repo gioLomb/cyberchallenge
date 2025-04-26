@@ -1,0 +1,55 @@
+-- ss1
+(atttaccare file binari) sia 32 che 64
+compilazione:
+- preprocessore, interpreta direttive con cancelletto (#include <stdio.h>)
+- compilazione, traduzione in assembly per ottenere object code
+- linking, eseguen interpretando codice librerie in maniera statica se nel file viene inserito l'intero codice della libreria, in maniera dinamica se il codice viene ottenuto da un altro binario per non appesantire
+
+i file vengono chiamati elf(executable and linking format):
+-elf header;program header table (informazioni sui segmenti del file),.text(istruzioni programma),.data (variabili da inizializzare in memoria)
+
+caricamento di un binario statico: utilizza il pcb(informazioni sul processo), il kernel carica il programam in più 'pagine' della ram all'interno di una memoria ram virtuale
+
+l'attacco avviene nel contesto delle operazioni syscall tra processo e memoria virtuale.
+
+--pwngdb
+stack serve per tenere traccia dell'esecuzioni del prgramma
+
+nello stack oltre ai dati vengono innseriti return address e base pointer per riconoscere la posizione sul quale ritornare dopo l'esecuzione di una funzione
+
+heap space area di memoria richiesta al kernel a parte, utile in caso di necessità di salvare un determinato dato di dimensione dinamica (mallocc..)
+
+mmap():syscall per richiedere nuovo segmento di memoria
+
+registri: memorie piccole e veloci;
+all'interno della memoria la memoria allocata è contrassegnata dallo stack pointer e block pointer, infatti in un segmento quando viene allocata memoria avviene una sottrazione dello stack pointer (identificherà il frame di mamoria allocata tra base e stack pointer di una specifica chiamata a funzione).
+
+base e stack pointer sono registri special purpose,mentre gli altri sono general purpose ( anche se vi sono ulteriori due registri per scrittura/lettura da ram)
+
+i registri sono formati da più blocchi ax=ah + al
+
+-- assembly
+mov 1,2 copia dati di 1 in 2
+push 1 inserisce 1 sullo stack
+pop 1 elimina 1 dallo stack
+
+cmp 1,2: confronta 1 e 2 attraverso una sottrazione e salvandosi il valore
+
+caricamento dinamico, il kernel non sa farlo...
+shabang e interprete dell'elf
+nel load() viene riconosciuto un interprete tra gli header (ld.so) che non è altro che un eseguibile statico
+tramite l'interprete il kernel fa il suo load() per ld.so
+in caso di librerie ritrovate nell'elf le carica in memoria dal file system prima di eseguire il file
+
+chiamate user space (call):
+64b- i parametri sono passati nei registri più restanti nello stack
+32b- tutti i parametri nello stack
+
+-- kernelspace(syscall)
+
+
+tool:strings gdb objdump
+ghydra
+
+information leakage: informazioni sugli indirizzi dei dati dello stack,
+buffer overflow: scrivere più dati di quanti richiesti

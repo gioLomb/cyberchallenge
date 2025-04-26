@@ -1,0 +1,35 @@
+// come funzionano i file
+kernel space: interazione (del processore) con l'hardware
+user space: interazioni a livello utente (istruzioni di base,tolte quelle pericolose), non può accedere
+ la modalità cambia in base ad un bit,switchabile solo in kernel mode;
+ in realtà in user sapce solo grazie a un interrupt o syscall per accedere al kernel space
+per accedere al disco abbiamo bisogno delle syscall
+
+più complicato di quanto sembra...
+livello user space:l'interrupt blocca il processore ed è computazionalmente pesante, perciò minor numero di syscall è meglio;
+livello kernel space: la scrittura su disco è pesante
+
+con la presenza dello stream buffer esso sarà utile in caso di lettura per fare meno syscall possibili perchè in caso di lettura forxata tramite syscall,
+vengono letti e inseriti nel buffer più byte di quelli richiesti per evitare prossime syscall.
+anche in caso di scrittura, i byte vengono inizialmente scritti nel buffer e con flush() scritti effettivamrente nel disco
+
+
+
+
+-- network
+data link:controlla errori livello fisico
+network: routing dei pacchertti
+trasporto: dove inviare pacchetti nei vari processi
+session: gestione handshake con tls
+
+sockeet = layer 3(ip) e layer 4(udp o tcp)
+
+2 indirizzi mac: 1 effettivo e un mac che cambia ogni volta poichè tramite il mac si potrebbe riconoscere la rete
+
+--- docker
+
+docker exec -it nome_container /bin/sh   per entrare in un container (cmd)
+docker cp per spostare file dal proprio fs a quello del container
+
+//ad ogni modifica viene sovrapposta l'immagine modificata, come vediamo nel dockerfile:
+con cui possiamo creare una immagine partendo da una immagine già esistsente sulla quale sarà sovrapposta l'immagine personalizzata dal docker file

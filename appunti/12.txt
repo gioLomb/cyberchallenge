@@ -1,0 +1,15 @@
+Controllo degli accessi in ambienti unix
+Controlli kernel per l'accesso al disco
+anche lo stesso ping usando le raw socket potrebbero essere dannosi
+soluzione 1: bit suid per dare accesso a un binario a un utente non privilegiato oppure capabilities (anche per file)
+file sudoers per configurare cosa e come i vari utenti possonoa accedere
+soluzioni moderne: SELinux
+users e group-> possiedono uid e gid contenuti in etc/passwd (in realtà non ci sono informazioni sensibili,che stanno in etc/shadow)
+
+le password sono hashate e prima dell'effettivo possiedono un id che identifica l'algoritmo usato e alla fine il salt(che rende più 
+difficile il brute force)
+
+ad ogni processo vengono associati utente e gruppo. divisi in reale ed effettivo: quello reale lancia solitamente il processo,
+quello effettivo quelli che dipendono dal bit suid ad esempio(ping lanciato da gg in realtà come effettivo avrà root)
+
+SOLO IL PROPRIETARIO PUÒ CAMBIARE PERMESSI E LUI PUÒ SOLO ESSERE CAMBIATO DA SUDO

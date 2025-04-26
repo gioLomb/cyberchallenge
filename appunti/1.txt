@@ -1,0 +1,51 @@
+stdin, stdout, stderr in un programma (file:visti come flussi) solo in linux
+windows file system  eeffettivo, linux(unix) virtual fyle system, cartelle con diversi fyle system o cartelle inessitenti.
+/proc cartella per accedere alle informazioni del kernel (non esistono su disco!!) ad esempio sono visisbii i processi tramite pid come cartelle.
+ogni cosa,anch device ssono file
+
+scrivere e leggere:
+ls 1>ciao.txt   //1> per flusso stdout ; 2> per il flusso stderr; &>; >> append entrambi
+cat ciao.txt //ottengo output di ls
+
+grep:
+ls | lolcat // output di ls sarà input di lolcat
+
+prima sort poi uniq(tolgie solo se vicini)
+
+-- regex
+
+-- shibang
+/usr/bin/env python3 sdsdsdsdsds
+effettuata una syscall per riconoscere l'interprete python, per evitare di scrivere una intera itruzione specificando l'interprete
+
+ssh per collegarsi al server
+
+vimtutor
+
+-- permessi file visibili in ls
+ugo: user group other
+si possono cambiare con chmod
+diverse sintassi chmod ug+rmw 
+
+nc connessipone tcp  socket
+
+strings trovar estring sensarw in qualcosa
+
+--cartella sys
+impostazione parametri kernel (ad esempio disabilitare ipv6)
+
+--link
+hardlink stesso file con stesso inode(rifermiento in disco) : ln /percorso
+symlink stesso file diverso inode
+
+--python
+pwntools automatizzare gli attacchi
+
+from pwn import *
+io=remote('nomeServer',80)
+io.sendLine()
+io.send()
+io.sendLineThen()
+// b per il byte
+
+-- steganografia hacking lsb8least significant bit)diocanedux

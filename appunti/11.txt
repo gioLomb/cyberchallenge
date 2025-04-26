@@ -1,0 +1,10 @@
+hash function -> funzioni che da una stringa permettono di ottenere un altra stringa di un determinato numeri di byte
+hash function crittografiche-> funzioni one-way (irreversibili,dall'output non si può avere l'input) e senza collisione (no stesso output)
+e imprevedibile
+
+SHA e MD5 si basano su paradigma MeRKLE-dAMGAARD
+
+1° LAYER DI SICUREZZA: HASH function ->INTEGRITÀ DEL MESSAGGIO
+2° LAYER:CIFRAZIONE DIGEST CON CHIAVE PRIVATA E ACCODARE CHIAVE PUBBLICA (firma digitale) //viene preferito a MAC(msg auth code) per non scambiare la chiave PRIVATA E SIMMETRICO
+
+3° IDENTIFICARE LA CHIAVE PUBBLICA DELL'UTENTE (certificati)

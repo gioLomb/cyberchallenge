@@ -1,0 +1,13 @@
+dmz = comunicazione tra inside e outside condizionata
+lo sniffer ottiene pacchetti dal livello datalink (tapping) per poi interpretre gli altri header
+per wifi rischio modalità promiscua (il dispositivo cattura tutti i pacchetti dellar ete,anche non indirizzati a lui)
+
+ARP poisoning: dopo essere entrati in una LAN possiamo rispondere alle richieste arp utilizzando il nostro mac quando viene richiesto l'ip
+del gateway ad esempio 
+
+contro dei firewall: performance e accessi negati
+modalità firewall: 
+-routed, blocca ip e porte
+-transpared, blocca mac
+
+il CAN è il bus a cui vengono collegati tutti i sensori e viene spesso attaccato con OBD
