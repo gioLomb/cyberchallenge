@@ -30,7 +30,8 @@ Qui troverai una raccolta di **appunti personali**, **soluzioni ai problemi**, e
 
 Puoi consultare tutte le **soluzioni spiegate** delle challenge, raccolte ordinatamente in una cartella condivisa su Google Drive:
 
-📂 [Vai alla cartella Drive]([https://drive.google.com/drive/folders/tuo-link-copiato](https://drive.google.com/drive/folders/1-hVnI191omHbhbe7KLO0zv_QP5FU5HJG))
+📂 [Vai alla cartella Drive](https://drive.google.com/drive/folders/1-hVnI191omHbhbe7KLO0zv_QP5FU5HJG)
+
 
 
 > Le soluzioni sono accompagnate da commenti, screenshot, script e spiegazioni passo-passo.
